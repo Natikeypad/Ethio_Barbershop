@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark-900: #0a0a0f;
+  --color-dark-800: #12121a;
+  --color-dark-700: #1a1a2e;
+  --color-dark-600: #22223a;
+  --color-dark-500: #2d2d44;
+  --color-dark-400: #3d3d56;
+  
+  --color-gold-500: #f5a623;
+  --color-gold-400: #fbbf24;
+  --color-gold-300: #fcd34d;
+  
+  --color-emerald-500: #10b981;
+  --color-emerald-400: #34d399;
+  
+  --color-blue-500: #3b82f6;
+  --color-blue-400: #60a5fa;
+  
+  --color-orange-500: #f97316;
+  --color-orange-400: #fb923c;
+  
+  --color-rose-500: #f43f5e;
+  --color-rose-400: #fb7185;
+
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-ethiopic: 'Noto Sans Ethiopic', 'Inter', sans-serif;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--color-dark-900, #0a0a0f);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Ethiopic Font Utility */
+.font-ethiopic {
+  font-family: var(--font-ethiopic);
+}
+
+/* Glassmorphism utility card */
+.glass-card {
+  background: rgba(18, 18, 26, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(245, 166, 35, 0.35);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(245, 166, 35, 0.15);
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fcd34d 0%, #f5a623 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-emerald-gradient {
+  background: linear-gradient(135deg, #6ee7b7 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-blue-gradient {
+  background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #22223a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d3d56;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.6));
+  }
+  50% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 2px rgba(245, 166, 35, 0.2));
+  }
+}
+
+@keyframes countUpAnimation {
+  from {
+    opacity: 0.3;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility Animation Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-count-up {
+  animation: countUpAnimation 0.6s ease-out forwards;
+}
+
+/* Subtle background glow effects */
+.bg-radial-gradient {
+  background: radial-gradient(circle at 50% 0%, rgba(245, 166, 35, 0.08) 0%, transparent 60%);
+}
+
+/* Ethiopian pattern overlay utility */
+.pattern-overlay {
+  position: relative;
+}
+.pattern-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/pattern-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Image hover zoom effect */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-zoom:hover img {
+  transform: scale(1.08);
+}
+
+/* Card shine effect on hover */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  pointer-events: none;
+  transition: none;
+}
+.card-shine:hover::after {
+  animation: shine 0.8s ease-in-out;
+}
+
+/* Hero section responsive adjustments */
+@media (max-width: 640px) {
+  .hero-responsive-text {
+    font-size: 1.75rem;
+  }
+}
